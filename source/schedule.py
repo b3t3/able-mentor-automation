@@ -31,7 +31,7 @@ COLUMNS_BETWEEN_SLOTS = "columns_between_slots"
 
 SOFIA = "sofia"
 ONLINE = "online"
-SEASON_TYPE = "season_type"
+SEASON_TYPES = "season_types"
 SLOT_SIZE = "slot_size"
 START_TIME = "start_time"
 TIME_PER_TEAM_IN_MINUTES = "time_per_team_in_minutes"
@@ -89,7 +89,7 @@ def get_config(season: str):
             ROWS_BETWEEN_SLOTS: js[FORMAT][ROWS_BETWEEN_SLOTS],
             COLUMNS_BETWEEN_SLOTS: js[FORMAT][COLUMNS_BETWEEN_SLOTS],
             # season
-            SEASON_TYPE: js[season][SEASON_TYPE],
+            SEASON_TYPES: js[season][SEASON_TYPES],
             SLOT_SIZE: js[season][SLOT_SIZE],
             START_TIME: js[season][START_TIME],
             TIME_PER_TEAM_IN_MINUTES: js[season][TIME_PER_TEAM_IN_MINUTES],
@@ -108,7 +108,7 @@ def get_column_name(csv_data, column_index: int):
 
 def get_column_data(csv_data, column_index: int):
     column_name = get_column_name(csv_data, column_index)
-    column_data = csv_data[column_name].tolist()
+    column_data = [x.strip() for x in csv_data[column_name].tolist()]
     return column_data
 
 
@@ -129,7 +129,7 @@ def get_teams(config, csv_data):
     team_number = 0
     team_start_time = ""
     for i in range(len(active)):
-        if active[i] == "Активен" and season_types[i] == config[SEASON_TYPE]:
+        if active[i] == "Активен" and season_types[i] in config[SEASON_TYPES]:
             teams.append(Team(team_number, students[i], mentors[i], coordinators[i], team_start_time))
 
     return teams

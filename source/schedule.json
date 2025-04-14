@@ -2,9 +2,9 @@
     "csv": {
         "active_column": "A",
         "student_column": "C",
-        "mentor_column": "H",
+        "mentor_column": "F",
         "coordinator_column": "B",
-        "season_type_column": "K"
+        "season_type_column": "I"
     },
     "format": {
         "row_height": 30,
@@ -13,26 +13,26 @@
         "columns_between_slots": 1
     },
     "sofia": {
-        "season_type": "София",
-        "slot_size": 16,
+        "season_types": ["София", "и двете"],
+        "slot_size": 13,
         "start_time": "10:55:00",
         "time_per_team_in_minutes": 5,
         "time_between_slots_in_minutes": 60,
         "halls": [
             {
-                "name": "CITY",
-                "coordinators": ["Елица", "Яна Р.", "Антония", "Вик", "Румен", "Мони", "Лео"]
+                "name": "OPERA",
+                "coordinators": ["Али", "Антония", "Вик", "Румен", "Мони", "Лео", "Лили", "Аля", "Симеон"]
             },
             {
-                "name": "NEW YORK",
-                "coordinators": ["Биляна", "Боби", "Йоанна В.", "Мария", "Марти", "Мила Анг.", "Ема", "Данаил", "Яна С."]
+                "name": "BALLROOM",
+                "coordinators": ["Ангелика", "Биляна", "Мими", "Марти Ламбов", "Димана"]
             }
         ],
-        "random_seed": 0
+        "random_seed": 1
     },
     "online": {
-        "season_type": "онлайн",
-        "slot_size": 11,
+        "season_types": ["онлайн"],
+        "slot_size": 15,
         "start_time": "10:55:00",
         "time_per_team_in_minutes": 5,
         "time_between_slots_in_minutes": 15,
