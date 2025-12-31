@@ -2,10 +2,10 @@ import os
 import csv
 import math
 
-
-CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__)).replace("\\", "/")
-OUTPUT_DIRECTORY = f"{CURRENT_DIRECTORY}/student_profiles_redacted"
-REGISTER_FILE_NAME = "student_register.csv"
+CURRENT_DIRECTORY = os.path.dirname(
+    os.path.realpath(__file__)).replace("\\", "/")
+OUTPUT_DIRECTORY = f"{CURRENT_DIRECTORY}/student profiles" # Folder containing the student profiles
+REGISTER_FILE_NAME = "student_register.csv" # CSV file with student and mentor information
 REGISTER_FILE_PATH = f"{CURRENT_DIRECTORY}/{REGISTER_FILE_NAME}"
 
 
@@ -16,8 +16,8 @@ def get_column_index(column):
     return int(decimal_value - 1)
 
 
-STUDENT_NAME = get_column_index("D")
-MENTOR_NAME = get_column_index("CC")
+STUDENT_NAME = get_column_index("BT")
+MENTOR_NAME = get_column_index("BU")
 
 
 def rename_existing_profiles():

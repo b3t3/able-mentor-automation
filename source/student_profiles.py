@@ -19,61 +19,56 @@ def get_column_index(column):
     return int(decimal_value - 1)  # the index is the decimal value minus 1
 
 
-CONFIRMED = get_column_index("O")
-STUDENT_NAME = get_column_index("AF")
-AGE = get_column_index("AL")
-CITY = get_column_index("AN")
-SCHOOL_NAME = get_column_index("AM")
-GRADE = get_column_index("AO")
-SCHOOL_INTERESTS = get_column_index("AP")
-NON_SCHOOL_INTERESTS = get_column_index("AQ")
-SIMILAR_PROGRAMS = get_column_index("AR")
-NEED = get_column_index("AS")
-ENGLISH_LEVEL = get_column_index("AT")
-SPORT = get_column_index("AU")
-WHAT_TO_DO_AFTER_SCHOOL = get_column_index("AV")
-INTERESTS = get_column_index("AW")
-MENTOR_EXPERIENCE = get_column_index("AX")
-SKILLS_TO_IMPROVE = get_column_index("AY")
-FREE_TIME_ACTIVITIES = get_column_index("AZ")
-DIFFICULT_SITUATION = get_column_index("BA")
-WHY_APPLY = get_column_index("BB")
-IDEA_IN_ABLE_MENTOR = get_column_index("BC")
-WANT_TO_CHANGE = get_column_index("BD")
-HOURS_PER_WEEK = get_column_index("BE")
-PROJECT_WITH_MENTOR = get_column_index("BF")
-HEARD_OF_ABLE_MENTOR = get_column_index("BG")
+CONFIRMED = get_column_index("A")
+STUDENT_NAME = get_column_index("AB")
+AGE = get_column_index("AC")
+CITY = get_column_index("AG")
+SCHOOL_NAME = get_column_index("AK")
+GRADE = get_column_index("AL")
+SCHOOL_INTERESTS = get_column_index("AM")
+NON_SCHOOL_INTERESTS = get_column_index("AO")
+MOTIVATION = get_column_index("AS")
+SIMILAR_PROGRAMS = get_column_index("AT")
+NEED = get_column_index("AX")
+WHAT_TO_DO_AFTER_SCHOOL = get_column_index("AN")
+INTERESTS = get_column_index("AV")
+DIFFICULT_SITUATION = get_column_index("AP")
+WHY_APPLY = get_column_index("AW")
+HOURS_PER_WEEK = get_column_index("AR")
+PROJECT_SPHERE = get_column_index("AU")
+HEARD_OF_ABLE_MENTOR = get_column_index("BB")
+ROLE_IN_TEAM = get_column_index("AQ")
+WANT_TO_IMPROVE = get_column_index("AY")
+SPECIFIC_SPHERE = get_column_index("AZ")
+ASPECTS_FOR_WORKING_WITH_MENTOR = get_column_index("BA")
 
 column_titles = {
-    CONFIRMED: "Потвърдил участие",
+    CONFIRMED: "гр",
     STUDENT_NAME: "Ученик",
     AGE: "Възраст",
     CITY: "Населено място",
     SCHOOL_NAME: "Училище",
     GRADE: "Завършен клас",
-    SCHOOL_INTERESTS: "Интереси, свързани с училище",
+    SCHOOL_INTERESTS: "Любими предмети",
+    WHAT_TO_DO_AFTER_SCHOOL: "Планове след гимназията:",
     NON_SCHOOL_INTERESTS: "Интереси извън училище",
-    SIMILAR_PROGRAMS: "Участвал ли си в други сходни програми, завършил ли си ги и какво си взе от тях?",
-    NEED: "ABLE Mentor е напълно безплатна програма с ограничен капацитет. Защо имаш нужда да участваш в нея?",
-    ENGLISH_LEVEL: "Ниво на английски език",
-    SPORT: "Спорт",
-    WHAT_TO_DO_AFTER_SCHOOL: "Какво ще правя след гимназията:",
-    INTERESTS: "В кои сфери имаш интерес да се развиваш и в кои по-слаб?",
-    MENTOR_EXPERIENCE: "Ментор в каква професионална сфера би бил/а най-полезен/а за теб?",
-    SKILLS_TO_IMPROVE: "Кои свои качества искаш да промениш/подобриш?",
-    FREE_TIME_ACTIVITIES: "Как се забавляваш в свободното си време?",
-    DIFFICULT_SITUATION: "Разкажи ни за трудна ситуация и как си се справил/а?",
+    DIFFICULT_SITUATION: "Лично предизвикателство, което си преодолял/а",
+    ROLE_IN_TEAM: "Роля в екип",
+    HOURS_PER_WEEK: "Часове седмично, които можеш да отделиш за програмата",
+    MOTIVATION: "Мотивация за участие в програмата",
+    SIMILAR_PROGRAMS: "Участвал ли си в други сходни програми, завършил ли си ги и какво си взе от тях?", #F
+    PROJECT_SPHERE: "Проектни сфери",
+    INTERESTS: "Кариерни и академичи насоки",
     WHY_APPLY: "Защо кандидатстваш в програмата?",
-    IDEA_IN_ABLE_MENTOR: "Каква идея искаш да осъществиш в рамките на ABLE Mentor?",
-    WANT_TO_CHANGE: "Желая да променя...",
-    HOURS_PER_WEEK: "По колко часа седмично би отделял/а на проекта?",
-    PROJECT_WITH_MENTOR: "По какъв проект би работил/а със своя ментор?",
-    HEARD_OF_ABLE_MENTOR: "Научил/а за ABLE Mentor от?"
+    NEED: "Уточнение към цел на участие(ако има)?",
+    WANT_TO_IMPROVE: "Сфери за развитие",
+    SPECIFIC_SPHERE: "Специфична сфера",
+    ASPECTS_FOR_WORKING_WITH_MENTOR: "Аспекти за работа с ментор",
+    HEARD_OF_ABLE_MENTOR: "Научил/а за ABLE Mentor от?",
 }
 
-
 def try_create_doc(row_data, file_path):
-    if row_data[CONFIRMED] != "Да":
+    if row_data[CONFIRMED] != "matched":
         return False
 
     doc = docx.Document()
@@ -102,7 +97,7 @@ def create_docs():
     if not os.path.exists(OUTPUT_DIRECTORY):
         os.mkdir(OUTPUT_DIRECTORY)
 
-    doc_counter = 1  # Start a simple counter for numbering the files
+    doc_counter = 1  # Start a counter for numbering the files
 
     with open(REGISTER_FILE_PATH, encoding="utf-8", mode="r") as fstream:
         reader = csv.reader(fstream, delimiter=',', quotechar='"')
