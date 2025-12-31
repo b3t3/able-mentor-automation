@@ -3,9 +3,8 @@ from docx2pdf import convert
 
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__)).replace("\\", "/")
-INPUT_DIRECTORY = f"{CURRENT_DIRECTORY}/student_profiles_redacted"
-OUTPUT_DIRECTORY = f"{CURRENT_DIRECTORY}/student_profiles_pdf"
-
+INPUT_DIRECTORY = f"{CURRENT_DIRECTORY}/spn" # Folder containing the .docx student profiles
+OUTPUT_DIRECTORY = f"{CURRENT_DIRECTORY}/student_profiles_pdf" # Folder to save the converted PDF files
 
 if not os.path.exists(OUTPUT_DIRECTORY):
     os.mkdir(OUTPUT_DIRECTORY)
